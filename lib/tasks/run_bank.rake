@@ -6,7 +6,7 @@ namespace :elevators do
   task run_single: :environment do
     server = UNIXServer.new('/tmp/elevator.sock')
     Kernel.trap('INT') do
-      puts 'INTERRUPT'
+      puts 'Cleaning up and shutting down elevator'
       server.close
       FileUtils.rm('/tmp/elevator.sock')
       exit
@@ -22,13 +22,13 @@ namespace :elevators do
 
         case method
         when 'status', 'elevator_status'
-          msg = as_json(args[0], elevator)
+          msg = [as_json(args[0], elevator)]
         when 'elevator_call'
           elevator.call_to_floor(args[1].to_i)
-          msg = as_json(args[0], elevator)
+          msg = [as_json(args[0], elevator)]
         when 'elevator_step'
           elevator.step!
-          msg = as_json(args[0], elevator)
+          msg = [as_json(args[0], elevator)]
         else
           msg = { error: "#{method} not recognized" }
         end

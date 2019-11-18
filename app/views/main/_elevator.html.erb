@@ -1,9 +1,0 @@
-<div class='elevator' style='transform: translateY(<%= (@shaft[:floors] - (elevator['floor'].to_i + 1)) * 100 %>%);'>
-  <div class='down-floor-indicator <%= 'active' if elevator['status'] == 'going_down' %>'>V</div>
-  <div class='floor-indicator'><%= @shaft[:min_floor] + elevator['floor'] %></div>
-  <div class='up-floor-indicator <%= 'active' if elevator['status'] == 'going_up' %>'>^</div>
-  <div class='door-opening'>
-    <div class='door-panel left-door <%= 'open' if elevator['is_open'] %>'></div>
-    <div class='door-panel right-door <%= 'open' if elevator['is_open'] %>'></div>
-  </div>
-</div>

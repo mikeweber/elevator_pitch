@@ -5,7 +5,7 @@ import Elevator from './Elevator'
 import consumer from '../channels/consumer'
 
 function ElevatorIndex(props) {
-  const [elevator, setElevator] = useState(props.elevator)
+  const [elevators, setElevator] = useState(props.elevators)
 
   useEffect(() => {
     consumer.subscriptions.create("ElevatorChannel", {
@@ -13,12 +13,17 @@ function ElevatorIndex(props) {
         setElevator(data)
       }
     })
-  }, [props.elevator.id])
+  })
 
+  let activeFloors = []
+  const elevatorComponents = elevators.map((elevator, i) => {
+    activeFloors = activeFloors.concat(elevator.queue)
+    return <Elevator key={ i } { ...{ ...props, elevator } } />
+  })
   return (
     <div className='elevator-shaft'>
-      <ElevatorBank { ...{ ...props, elevator } } />
-      <Elevator { ...{ ...props, elevator } } />
+      <ElevatorBank { ...{ ...props, activeFloors } } />
+      { elevatorComponents }
     </div>
   )
 }

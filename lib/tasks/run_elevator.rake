@@ -27,6 +27,9 @@ namespace :elevators do
         when 'elevator_call'
           elevator.call_to_floor(args[0].to_i)
           msg = [MessageHelpers.as_json(0, elevator)]
+        when 'elevator_send'
+          elevator.call_to_floor(args[1].to_i)
+          msg = [MessageHelpers.as_json(0, elevator)]
         when 'elevator_step'
           elevator.step!
           msg = [MessageHelpers.as_json(args[0] || 0, elevator)]

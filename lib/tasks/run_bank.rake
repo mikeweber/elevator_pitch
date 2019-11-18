@@ -24,17 +24,20 @@ namespace :elevators do
 
         case method
         when 'status', 'elevator_status'
-          msg = bank.elevators.map.with_index { |el, i| MessageHelpers.as_json(i, el) }
+          msg = bank_message(bank)
         when 'elevator_call'
           bank.call_to_floor(args[0].to_i, direction(args[1] || 'up'))
-          msg = bank.elevators.map.with_index { |el, i| MessageHelpers.as_json(i, el) }
+          msg = bank_message(bank)
+        when 'elevator_send'
+          bank.elevators[args[0].to_i].call_to_floor(args[1].to_i)
+          msg = bank_message(bank)
         when 'elevator_step'
           if args[0]
             bank.elevators[args[0].to_i].step!
           else
             bank.step!
           end
-          msg = bank.elevators.map.with_index { |el, i| MessageHelpers.as_json(i, el) }
+          msg = bank_message(bank)
         else
           msg = { error: "#{method} not recognized" }
         end
@@ -49,6 +52,10 @@ namespace :elevators do
         puts "Connection closed"
       end
     end
+  end
+
+  def bank_message(bank)
+    bank.elevators.map.with_index { |el, i| MessageHelpers.as_json(i, el) }
   end
 
   def direction(dir)

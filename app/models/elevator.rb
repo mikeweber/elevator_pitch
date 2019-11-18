@@ -8,6 +8,10 @@ class Elevator
       socket_request("elevator_call #{floor}")
     end
 
+    def send_to_floor(id, floor)
+      socket_request("elevator_send #{id} #{floor}")
+    end
+
     def step(id = nil)
       socket_request("elevator_step #{id}")
     end

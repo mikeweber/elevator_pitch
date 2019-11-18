@@ -20,9 +20,11 @@ function ElevatorBank(props) {
   }
 
   return (
-    <div className='call-buttons'>
-      <a href='/elevators/step' data-remote='true' data-method='post'>Step</a>
-      { floorComponents }
+    <div className='elevator-shaft'>
+      <div className='call-buttons'>
+        <a href='/elevators/step' data-remote='true' data-method='post'>Step</a>
+        { floorComponents }
+      </div>
     </div>
   )
 }

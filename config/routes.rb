@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :elevators do
     post :step, on: :collection
+    post :step, on: :member
   end
   post 'elevators/call_to_floor/:floor', to: 'elevators#call_to_floor'
 

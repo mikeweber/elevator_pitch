@@ -18,10 +18,14 @@ function ElevatorIndex(props) {
   let activeFloors = []
   const elevatorComponents = elevators.map((elevator, i) => {
     activeFloors = activeFloors.concat(elevator.queue)
-    return <Elevator key={ i } { ...{ ...props, elevator } } />
+    return (
+      <div key={ i } className='elevator-shaft'>
+        <Elevator { ...{ ...props, elevator } } />
+      </div>
+    )
   })
   return (
-    <div className='elevator-shaft'>
+    <div>
       <ElevatorBank { ...{ ...props, activeFloors } } />
       { elevatorComponents }
     </div>

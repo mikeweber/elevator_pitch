@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import consumer from '../channels/consumer'
 
 function Elevator(props) {
-  const shaft = props.shaft
-  const [elevator, setElevator] = useState(props.elevator)
+  const { shaft, elevator } = props
 
   const totalFloors = shaft.floors
   const floorIndex  = elevator.floor
   const floor       = shaft.min_floor + floorIndex
   const translate   = (totalFloors - (floor + 2)) * 150
   const style       = { top: translate }
-
-  useEffect(() => {
-    consumer.subscriptions.create("ElevatorChannel", {
-      received(data) {
-        setElevator(data)
-      }
-    })
-  }, [props.elevator.id])
 
   return (
     <div className='elevator' style={ style }>

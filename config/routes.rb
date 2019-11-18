@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     get :step
   end
   get 'elevators/:id/call_to_floor/:floor', to: 'elevators#call_to_floor'
+
+  mount ActionCable.server, at: '/cable'
 end

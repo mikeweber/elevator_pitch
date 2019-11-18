@@ -1,11 +1,11 @@
 <pre><%= @elevator %></pre>
 <div class='elevator-shaft'>
   <div class='call-buttons'>
-    <a href='/elevators/1/step'>Step</a>
+    <a href='/elevators/1/step' data-remote='true'>Step</a>
     <% @shaft[:floors].times do |i| %>
       <% floor_index = @shaft[:floors] - i - 1 %>
       <div class='call-button-container'>
-        <a href='/elevators/1/call_to_floor/<%= floor_index %>' class='call-button <%= 'active' if @elevator['queue'].include?(floor_index) %>'>
+        <a href='/elevators/1/call_to_floor/<%= floor_index %>' data-remote='true' class='call-button <%= 'active' if @elevator['queue'].include?(floor_index) %>'>
           <%= @shaft[:max_floor] - i %>
         </a>
       </div>

@@ -1,6 +1,9 @@
 class ElevatorsController < ApplicationController
   def show
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   def call_to_floor
@@ -8,11 +11,17 @@ class ElevatorsController < ApplicationController
     if @shaft[:min_floor] <= (params[:floor].to_i + @shaft[:min_floor]) && (params[:floor].to_i + @shaft[:min_floor]) <= @shaft[:max_floor]
       Elevator.call_to_floor(params[:id], params[:floor])
     end
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   def step
     Elevator.step(params[:id])
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 end

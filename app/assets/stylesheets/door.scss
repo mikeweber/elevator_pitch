@@ -1,0 +1,108 @@
+.elevator-shaft {
+  position: relative;
+  left: 500px;
+  height: 1400px;
+  width: 300px;
+}
+
+.call-buttons {
+  position: absolute;
+  right: 100%;
+}
+
+.call-button-container {
+  transform: translateY(20%);
+}
+
+.call-button {
+  display: block;
+  width: 50px;
+  height: 50px;
+  color: #000;
+  top: 75px;
+  left: 175px;
+  border: 3px solid #333;
+  border-radius: 200px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 50px;
+  text-decoration: none;
+
+  &.active {
+    background: #D5BE41;
+  }
+}
+
+.elevator, .call-button-container {
+  width: 100px;
+  height: 150px;
+}
+
+.elevator {
+  position: relative;
+  background: #933;
+
+  .floor-indicator, .up-floor-indicator, .down-floor-indicator {
+    width: 30px;
+    position: absolute;
+    top: 5px;
+
+    &.active {
+      color: #D5BE41;
+    }
+  }
+
+  .down-floor-indicator {
+    left: 15px;
+    color: #FFF;
+  }
+
+  .up-floor-indicator {
+    left: 75px;
+    color: #FFF;
+  }
+
+  .floor-indicator {
+    left: 35px;
+    font-size: 15px;
+    color: #FFF;
+    background: #000;
+    text-align: center;
+  }
+
+  .door-opening {
+    position: absolute;
+    left: 12px;
+    top: 25px;
+    width: 75px;
+    height: 125px;
+    overflow: hidden;
+    background: #EEE;
+  }
+
+  .door-panel {
+    position: absolute;
+    background: #955;
+    transition: transform 2s ease-out;
+    width: 50%;
+    height: 100%;
+  }
+
+  .left-door {
+    left: 0px;
+    border-right: 1px solid black;
+
+    &.open {
+      transform: translateX(-100%);
+    }
+  }
+
+  .right-door{
+    right: 0px;
+    border-left: 1px solid black;
+
+    &.open {
+      transform: translateX(200%);
+    }
+  }
+}

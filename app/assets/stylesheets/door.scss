@@ -78,6 +78,14 @@
     height: 125px;
     overflow: hidden;
     background: #EEE;
+    &.open {
+      .left-door {
+        transform: translateX(-100%);
+      }
+      .right-door {
+        transform: translateX(200%);
+      }
+    }
   }
 
   .door-panel {
@@ -91,18 +99,10 @@
   .left-door {
     left: 0px;
     border-right: 1px solid black;
-
-    &.open {
-      transform: translateX(-100%);
-    }
   }
 
   .right-door{
     right: 0px;
     border-left: 1px solid black;
-
-    &.open {
-      transform: translateX(200%);
-    }
   }
 }

@@ -11,5 +11,5 @@
       </div>
     <% end %>
   </div>
-  <%= render 'main/elevator', { elevator: @elevator } %>
+  <%= react_component('Elevator', { elevator: @elevator, shaft: @shaft }) %>
 </div>

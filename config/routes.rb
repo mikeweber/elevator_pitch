@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :elevators do
-    get :step
+    post :step, on: :collection
   end
-  get 'elevators/:id/call_to_floor/:floor', to: 'elevators#call_to_floor'
+  post 'elevators/call_to_floor/:floor', to: 'elevators#call_to_floor'
 
   mount ActionCable.server, at: '/cable'
 end

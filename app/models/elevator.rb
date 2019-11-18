@@ -1,14 +1,14 @@
 class Elevator
   class << self
-    def status(id)
-      socket_request("elevator_status #{id}")
+    def status
+      socket_request("elevator_status")
     end
 
-    def call_to_floor(id, floor)
-      socket_request("elevator_call #{id} #{floor}")
+    def call_to_floor(floor)
+      socket_request("elevator_call #{floor}")
     end
 
-    def step(id)
+    def step(id = nil)
       socket_request("elevator_step #{id}")
     end
 

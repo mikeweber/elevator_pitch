@@ -12,7 +12,7 @@ function ElevatorBank(props) {
 
     floorComponents.push(
       <div key={ i } className='call-button-container'>
-      <a href={ `/elevators/1/call_to_floor/${floorIndex}` } data-remote='true' className={ 'call-button' + (activeFloors.indexOf(floorIndex) > -1 ? ' active' : '') }>
+      <a href={ `/elevators/call_to_floor/${floorIndex}` } data-remote='true' className={ 'call-button' + (activeFloors.indexOf(floorIndex) > -1 ? ' active' : '') } data-method='post'>
           { floorName }
         </a>
       </div>
@@ -21,7 +21,7 @@ function ElevatorBank(props) {
 
   return (
     <div className='call-buttons'>
-      <a href='/elevators/1/step' data-remote='true'>Step</a>
+      <a href='/elevators/step' data-remote='true' data-method='post'>Step</a>
       { floorComponents }
     </div>
   )

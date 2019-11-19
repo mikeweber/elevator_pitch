@@ -1,0 +1,54 @@
+@keyframes bounce {
+  0%   { transform: translateX(  0%); }
+  7%   { transform: translateX(-01%); }
+  10%  { transform: translateX(-02%); }
+  15%  { transform: translateX(-05%); }
+  20%  { transform: translateX(-08%); }
+  25%  { transform: translateX(-13%); }
+  30%  { transform: translateX(-18%); }
+  35%  { transform: translateX(-25%); }
+  40%  { transform: translateX(-32%); }
+  50%  { transform: translateX(-50%); }
+  55%  { transform: translateX(-44%); }
+  60%  { transform: translateX(-34%); }
+  65%  { transform: translateX(-44%); }
+  70%  { transform: translateX(-50%); }
+  80%  { transform: translateX(-45%); }
+  90%  { transform: translateX(-50%); }
+  95%  { transform: translateX(-48%); }
+  100% { transform: translateX(-50%); }
+}
+
+#page-container {
+  width: 100%;
+  height: 100%;
+}
+
+#tedd-container {
+  width: 400px;
+  height: 109px;
+  margin: auto;
+
+  .letters {
+    display: inline-block;
+    height: 109px;
+    float: left;
+  }
+
+  .te {
+    width: 180px;
+    background: asset-url('te.png');
+  }
+
+  .dd {
+    width: 200px;
+    background: asset-url('dd.png') #FFF;
+  }
+
+  &.bounce {
+    .dd {
+      transform: translateX(-50%);
+      animation: bounce 2s;
+    }
+  }
+}

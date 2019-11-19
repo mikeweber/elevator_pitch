@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   post 'elevators/call_to_floor/:floor', to: 'elevators#call_to_floor'
   post 'elevators/:id/send_to_floor/:floor', to: 'elevators#send_to_floor'
+  get '/tedd', to: 'main#tedd'
 
   mount ActionCable.server, at: '/cable'
 end

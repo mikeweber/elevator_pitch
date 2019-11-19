@@ -8,7 +8,7 @@ namespace :elevators do
     old_bank_spec_path = '../elevators/spec/bank.rb'
     bank_spec_path = '../elevators/spec/bank_spec.rb'
     if File.exists?(bank_path)
-      require_relative bank_path
+      require bank_path
     elsif File.exists?(old_bank_spec_path)
       require 'rspec'
       require old_bank_spec_path

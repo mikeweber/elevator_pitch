@@ -21,6 +21,7 @@ function ElevatorIndex(props) {
     const panel = []
     panel.push(
       <a
+        key='open'
         href={ `/elevators/${i}/toggle_door_hold` }
         className={ 'panel-button' + (elevator.door_held ? ' active' : '') }
         data-remote='true'

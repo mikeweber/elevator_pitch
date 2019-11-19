@@ -1,10 +1,17 @@
 require 'socket'
-require_relative './message_helpers'
-require_relative '../../../elevators/lib/elevator'
 
 namespace :elevators do
   desc 'Run a single elevator wrapped in a UNIX socket'
   task run_single: :environment do
+    require_relative './message_helpers'
+    elevator_path = '../elevators/lib/elevator.rb'
+    if File.exists?(elevator_path)
+      require_relative elevator_path
+    else
+      require 'rspec'
+      require '../elevators/spec/elevator_spec.rb'
+    end
+
     server = UNIXServer.new('/tmp/elevator.sock')
     Kernel.trap('INT') do
       puts 'Cleaning up and shutting down elevator'

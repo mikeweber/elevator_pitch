@@ -1,11 +1,22 @@
 require 'socket'
-require_relative './message_helpers'
-require_relative '../../../elevators/lib/bank'
-include MessageHelpers
 
 namespace :elevators do
   desc 'Run the elevator bank wrapped in a UNIX socket'
   task run_bank: :environment do
+    require_relative './message_helpers'
+    bank_path = '../elevators/lib/bank.rb'
+    old_bank_spec_path = '../elevators/spec/bank.rb'
+    bank_spec_path = '../elevators/spec/bank_spec.rb'
+    if File.exists?(bank_path)
+      require_relative bank_path
+    elsif File.exists?(old_bank_spec_path)
+      require 'rspec'
+      require old_bank_spec_path
+    elsif File.exists?(bank_spec_path)
+      require 'rspec'
+      require bank_spec_path
+    end
+
     server = UNIXServer.new('/tmp/elevator.sock')
     Kernel.trap('INT') do
       puts 'Cleaning up and shutting down elevator'

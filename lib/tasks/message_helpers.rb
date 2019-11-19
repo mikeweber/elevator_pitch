@@ -1,8 +1,9 @@
 module MessageHelpers
   def self.as_json(id, elevator)
-    door_held = false
-    door_held = elevator.door.held_open if elevator.respond_to?(:door) && elevator.door.respond_to?(:held_open)
-    { id: id, floor: elevator.floor, status: elevator.status, is_open: elevator.open?, queue: elevator.requested_floors, door_held: door_held }
+    door_held = elevator.try(:door).try(:held_open) || false
+    requested_floors = elevator.try(:requested_floors) || elevator.instance_variable_get('@requested_floors') || [elevator.instance_variable_get('@requested_floor')].compact
+
+    { id: id, floor: elevator.floor, status: elevator.status, is_open: elevator.open?, queue: requested_floors, door_held: door_held }
   end
 
   def self.parse_message(msg)

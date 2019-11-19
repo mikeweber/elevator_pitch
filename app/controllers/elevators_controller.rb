@@ -28,6 +28,14 @@ class ElevatorsController < ApplicationController
     end
   end
 
+  def toggle_door_hold
+    Elevator.toggle_door_hold(params[:id])
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
+  end
+
   def step
     Elevator.step
     respond_to do |format|

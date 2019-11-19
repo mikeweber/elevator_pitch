@@ -19,6 +19,14 @@ function ElevatorIndex(props) {
   const elevatorComponents = elevators.map((elevator, i) => {
     activeFloors = activeFloors.concat(elevator.queue)
     const panel = []
+    panel.push(
+      <a
+        href={ `/elevators/${i}/toggle_door_hold` }
+        className={ 'panel-button' + (elevator.door_held ? ' active' : '') }
+        data-remote='true'
+        data-method='post'
+      >&gt;&lt;</a>
+    )
     for (let f = props.shaft.min_floor; f <= props.shaft.max_floor; f++) {
       let floorIndex = f - props.shaft.min_floor
       let floorName  = props.shaft.floor_names[floorIndex] || f

@@ -38,6 +38,10 @@ namespace :elevators do
             bank.step!
           end
           msg = bank_message(bank)
+        when 'toggle_door_hold'
+          elevator = bank.elevators[args[0].to_i]
+          elevator.door.held_open = !elevator.door.held_open
+          msg = bank_message(bank)
         else
           msg = { error: "#{method} not recognized" }
         end

@@ -12,6 +12,10 @@ class Elevator
       socket_request("elevator_send #{id} #{floor}")
     end
 
+    def toggle_door_hold(id)
+      socket_request("toggle_door_hold #{id}")
+    end
+
     def step(id = nil)
       socket_request("elevator_step #{id}")
     end

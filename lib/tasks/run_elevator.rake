@@ -32,7 +32,10 @@ namespace :elevators do
           msg = [MessageHelpers.as_json(0, elevator)]
         when 'elevator_step'
           elevator.step!
-          msg = [MessageHelpers.as_json(args[0] || 0, elevator)]
+          msg = [MessageHelpers.as_json((args[0] || 0).to_i, elevator)]
+        when 'toggle_door_hold'
+          elevator.door.held_open = !elevator.door.held_open if elevator.respond_to?(:door)
+          msg = [MessageHelpers.as_json((args[0] || 0).to_i, elevator)]
         else
           msg = { error: "#{method} not recognized" }
         end

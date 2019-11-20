@@ -18,8 +18,10 @@ function Elevator(props) {
       <div className='floor-indicator'>{ floorName }</div>
       <div className={ 'up-floor-indicator' + (elevator.status === 'going_up' ? ' active' : '') }>^</div>
       <div className={ 'door-opening' + (elevator.is_open ? ' open' : '') }>
-        <div className='door-panel left-door'></div>
-        <div className='door-panel right-door'></div>
+        <div className={ (elevator.haunted ? 'haunted' : '') }>
+          <div className='door-panel left-door'></div>
+          <div className='door-panel right-door'></div>
+        </div>
         <div className='floor'></div>
       </div>
     </div>

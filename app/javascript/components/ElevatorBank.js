@@ -13,7 +13,7 @@ function ElevatorBank(props) {
     floorComponents.push(
       <div key={ i } className='call-button-container'>
         <a href={ `/elevators/call_to_floor/${floorIndex}` } data-remote='true' className={ 'call-button' + (activeFloors.indexOf(floorIndex) > -1 ? ' active' : '') } data-method='post'>
-          { floorName }
+          <span className='shine'>{ floorName }</span>
         </a>
       </div>
     )

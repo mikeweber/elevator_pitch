@@ -13,12 +13,14 @@ function Elevator(props) {
 
   return (
     <div className='elevator' style={ style }>
+      <div className='ceiling'></div>
       <div className={ 'down-floor-indicator' + (elevator.status === 'going_down' ? ' active' : '') }>V</div>
       <div className='floor-indicator'>{ floorName }</div>
       <div className={ 'up-floor-indicator' + (elevator.status === 'going_up' ? ' active' : '') }>^</div>
       <div className={ 'door-opening' + (elevator.is_open ? ' open' : '') }>
         <div className='door-panel left-door'></div>
         <div className='door-panel right-door'></div>
+        <div className='floor'></div>
       </div>
     </div>
   )

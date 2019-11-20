@@ -48,6 +48,9 @@ function ElevatorIndex(props) {
         </div>
         <div className='elevator-shaft'>
           <Elevator { ...{ ...props, elevator } } />
+          <div className='floor-container'>
+            <div className='floor'></div>
+          </div>
         </div>
       </div>
     )

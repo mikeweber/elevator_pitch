@@ -24,8 +24,21 @@
 
   .elevator-shaft {
     margin: 0 100px;
-    background: #333;
+    background: linear-gradient(to right, #000 0%, #000 25%, #444 25%);
     height: 750px;
+    overflow: hidden;
+  }
+
+  .floor-container {
+    position: relative;
+    height: 100%;
+  }
+
+  .floor {
+    position: absolute;
+    background: #666;
+    top: 735px;
+    z-index: 0;
   }
 }
 
@@ -82,14 +95,34 @@
   }
 }
 
-.elevator {
+.ceiling, .floor {
+  height: 15px;
   width: 100px;
-  height: 150px;
+  display: block;
+  transform: skew(-60deg) translateX(12px);
+  position: absolute;
+  top: -15px;
 }
 
 .elevator {
+  width: 100px;
+  height: 150px;
+  float: left;
   position: relative;
   background: #933;
+  z-index: 10;
+
+  .ceiling {
+    background: #888;
+    top: -15px;
+  }
+
+  .floor {
+    background: #B77;
+    top: 110px;
+    z-index: 1;
+    left: -12px;
+  }
 
   .floor-indicator, .up-floor-indicator, .down-floor-indicator {
     width: 30px;
@@ -126,7 +159,7 @@
     width: 75px;
     height: 125px;
     overflow: hidden;
-    background: #EEE;
+    background: linear-gradient(to right, #AAA 0%, #AAA 18%, #EEE 18%);
     &.open {
       .left-door {
         transform: translateX(-100%);
@@ -143,6 +176,7 @@
     transition: transform 2s ease-out;
     width: 50%;
     height: 100%;
+    z-index: 2;
   }
 
   .left-door {

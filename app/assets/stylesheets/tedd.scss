@@ -25,9 +25,10 @@
 }
 
 #tedd-container {
-  width: 400px;
+  width: 280px;
   height: 109px;
   margin: auto;
+  overflow: hidden;
 
   .letters {
     display: inline-block;
@@ -43,12 +44,15 @@
   .dd {
     width: 200px;
     background: asset-url('dd.png') #FFF;
+    position: relative;
+    left: 180px;
+    top: -109px;
   }
 
   &.bounce {
     .dd {
       transform: translateX(-50%);
-      animation: bounce 2s;
+      animation: bounce 1s;
     }
   }
 }

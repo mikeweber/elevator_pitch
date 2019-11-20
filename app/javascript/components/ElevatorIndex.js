@@ -42,17 +42,22 @@ function ElevatorIndex(props) {
       )
     }
     return (
-      <div key={ i } className='elevator-shaft'>
+      <div key={ i } className='elevator-shaft-container'>
         <div className='elevator-panel'>
           { panel }
         </div>
-        <Elevator { ...{ ...props, elevator } } />
+        <div className='elevator-shaft'>
+          <Elevator { ...{ ...props, elevator } } />
+        </div>
       </div>
     )
   })
   return (
     <div>
-      <ElevatorBank { ...{ ...props, activeFloors } } />
+      <div className='left-container'>
+        <a href='/elevators/step' id='step-button' data-remote='true' data-method='post'>Step</a>
+        <ElevatorBank { ...{ ...props, activeFloors } } />
+      </div>
       { elevatorComponents }
     </div>
   )

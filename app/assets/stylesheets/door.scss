@@ -153,13 +153,19 @@
     }
   }
 
+  .up-floor-indicator, .down-floor-indicator {
+    &.active {
+      text-shadow: 0px 0px 5px #D5BE41;
+    }
+  }
+
   .down-floor-indicator {
-    left: 15px;
+    left: 70px;
     color: #FFF;
   }
 
   .up-floor-indicator {
-    left: 75px;
+    left: 15px;
     color: #FFF;
   }
 

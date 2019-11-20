@@ -6,7 +6,7 @@ namespace :elevators do
     require_relative './message_helpers'
     elevator_path = '../elevators/lib/elevator.rb'
     if File.exists?(elevator_path)
-      require_relative elevator_path
+      require elevator_path
     else
       require 'rspec'
       require '../elevators/spec/elevator_spec.rb'

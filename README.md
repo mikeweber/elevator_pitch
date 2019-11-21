@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Elevator Pitch
+In on terminal, run the rails server `rails `, and in another terminal, run one of the
+elevator programs. Either `rake elevators:run_single` for one elevator, or `rake elevators:run_bank`
+for a bank of 3 elevators. This program assumes that the elevators[https://github.com/mikeweber/elevators]
+repo exists in a neighboring directory. e.g. ~/elevator_pitch and ~/elevators.
